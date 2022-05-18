@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Maps;
 import com.young.sarangbang.model.dto.home.domain.DtoFileInfo;
 import com.young.sarangbang.model.dto.home.service.DtoFileInfoService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.compress.utils.Lists;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
@@ -38,21 +39,20 @@ import java.util.List;
  * Description :
  */
 @Slf4j
+@RequiredArgsConstructor
 @RequestMapping(value = "/files")
 @Controller
 public class FileController {
+
+    private final ObjectMapper objectMapper;
+
+    private final DtoFileInfoService dtoFileInfoService;
 
     @Value("${file.path}")
     String storePath;
 
     @Value("${file.excelPath}")
     String excelPath;
-
-    @Autowired
-    ObjectMapper objectMapper;
-
-    @Autowired
-    DtoFileInfoService dtoFileInfoService;
 
     @RequestMapping(value = "/fileDelete", method = RequestMethod.POST)
     @ResponseBody

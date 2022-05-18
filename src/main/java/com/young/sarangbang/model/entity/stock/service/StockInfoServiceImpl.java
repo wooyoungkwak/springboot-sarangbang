@@ -7,6 +7,7 @@ import com.young.sarangbang.model.entity.stock.domain.StockCompany;
 import com.young.sarangbang.model.entity.stock.domain.StockInfo;
 import com.young.sarangbang.model.entity.stock.enums.StockType;
 import com.young.sarangbang.model.entity.stock.repository.StockInfoRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,14 +21,12 @@ import java.util.List;
  * Project : sarangbang
  * Description :
  */
+@RequiredArgsConstructor
 @Service
 public class StockInfoServiceImpl implements StockInfoService{
 
-    @Autowired
-    StockInfoRepository stockInfoRepository;
-
-    @PersistenceContext
-    EntityManager entityManager;
+    private final StockInfoRepository stockInfoRepository;
+    private final EntityManager entityManager;
 
     @Override
     public StockInfo get(Integer stockInfoSeq) {

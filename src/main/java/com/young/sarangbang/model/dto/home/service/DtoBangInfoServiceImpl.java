@@ -11,6 +11,7 @@ import com.young.sarangbang.model.entity.banginfo.domain.BangInfo;
 import com.young.sarangbang.model.entity.banginfo.domain.QBangInfo;
 import com.young.sarangbang.model.entity.banginfo.service.BangInfoService;
 import com.young.sarangbang.model.dto.home.domain.DtoBangInfo;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,14 +29,13 @@ import java.util.List;
  * Description :
  */
 @Slf4j
+@RequiredArgsConstructor
 @Service
 public class DtoBangInfoServiceImpl implements DtoBangInfoService {
 
-    @Autowired
-    BangInfoService bangInfoService;
+    private final BangInfoService bangInfoService;
 
-    @Autowired
-    ObjectMapper objectMapper;
+    private final ObjectMapper objectMapper;
 
     @Override
     public DtoBangInfo get(Object obj) throws SarangbangException {

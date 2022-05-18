@@ -7,6 +7,7 @@ import com.young.sarangbang.model.dto.home.domain.DtoFileInfo;
 import com.young.sarangbang.model.entity.files.domain.FileInfo;
 import com.young.sarangbang.model.entity.files.enums.FileType;
 import com.young.sarangbang.model.entity.files.service.FileInfoService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.compress.utils.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,14 +24,13 @@ import java.util.List;
  * Description :
  */
 @Slf4j
+@RequiredArgsConstructor
 @Service
 public class DtoFileInfoServiceImpl implements DtoFileInfoService{
 
-    @Autowired
-    ObjectMapper objectMapper;
+    private final ObjectMapper objectMapper;
 
-    @Autowired
-    FileInfoService fileInfoService;
+    private final FileInfoService fileInfoService;
 
     @Override
     public DtoFileInfo get() {

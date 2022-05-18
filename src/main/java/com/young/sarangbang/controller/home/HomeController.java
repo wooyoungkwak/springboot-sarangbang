@@ -16,6 +16,7 @@ import com.young.sarangbang.model.dto.home.domain.DtoEstateAgency;
 import com.young.sarangbang.model.dto.home.service.DtoEstateAgencyService;
 import com.young.sarangbang.model.vo.home.domain.VoStockInfo;
 import com.young.sarangbang.model.vo.home.service.VoStockService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,26 +35,16 @@ import java.util.Map;
  * Description :
  */
 @Slf4j
+@RequiredArgsConstructor
 @Controller
 public class HomeController extends ExtendsController {
 
-    @Autowired
-    DtoBangInfoService dtoBangInfoService;
-
-    @Autowired
-    DtoEstateAgencyService dtoEstateAgencyService;
-
-    @Autowired
-    DtoUserService dtoUserService;
-
-    @Autowired
-    VoStockService voStockService;
-
-    @Autowired
-    ZipcodeService zipcodeService;
-
-    @Autowired
-    DtoFileInfoService dtoFileInfoService;
+    private final DtoBangInfoService dtoBangInfoService;
+    private final DtoEstateAgencyService dtoEstateAgencyService;
+    private final DtoUserService dtoUserService;
+    private final VoStockService voStockService;
+    private final ZipcodeService zipcodeService;
+    private final DtoFileInfoService dtoFileInfoService;
 
     /** GET */
 

@@ -1,6 +1,7 @@
 package com.young.sarangbang;
 
 import com.young.sarangbang.security.*;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -18,23 +19,19 @@ import org.springframework.security.config.http.SessionCreationPolicy;
  * Description :
  */
 @Slf4j
+@RequiredArgsConstructor
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    UserAuthSuccessHandler userAuthSuccessHandler;
+    private final UserAuthSuccessHandler userAuthSuccessHandler;
 
-    @Autowired
-    UserAuthFailureHandler userAuthFailureHandler;
+    private final UserAuthFailureHandler userAuthFailureHandler;
 
-    @Autowired
-    UserAuthLogoutSuccessHandler userAuthLogoutSuccessHandler;
+    private final UserAuthLogoutSuccessHandler userAuthLogoutSuccessHandler;
 
-//    @Autowired
-//    UserAuthenticationProvider userAuthenticationProvider;
+//    private final UserAuthenticationProvider userAuthenticationProvider;
 
-    @Autowired
-    UserAuthenticationManager authenticationManager;
+    private final UserAuthenticationManager authenticationManager;
 
 //    @Override
 //    public void configure(AuthenticationManagerBuilder builder) {

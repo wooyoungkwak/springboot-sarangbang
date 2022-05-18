@@ -10,6 +10,7 @@ import com.young.sarangbang.exception.SarangbangExceptionCode;
 import com.young.sarangbang.model.entity.login.domain.QUser;
 import com.young.sarangbang.model.entity.login.domain.User;
 import com.young.sarangbang.model.entity.login.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,15 +27,14 @@ import java.util.List;
  * Description :
  */
 @Slf4j
+@RequiredArgsConstructor
 @Transactional(rollbackFor = SarangbangException.class)
 @Service
 public class UserServiceImpl implements UserService {
 
-    @Autowired
-    UserRepository userRepository;
+    private final UserRepository userRepository;
 
-    @PersistenceContext
-    EntityManager entityManager;
+    private final EntityManager entityManager;
 
     @Override
     public User get(Integer userSeq) throws SarangbangException {

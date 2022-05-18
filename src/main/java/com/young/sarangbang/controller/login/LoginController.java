@@ -6,6 +6,7 @@ import com.young.sarangbang.model.dto.login.domain.DtoUser;
 import com.young.sarangbang.model.dto.login.service.DtoUserService;
 import com.young.sarangbang.model.entity.login.enums.Role;
 import com.young.sarangbang.model.entity.login.service.UserService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,11 +22,11 @@ import javax.servlet.http.HttpServletRequest;
  * Description :
  */
 @Slf4j
+@RequiredArgsConstructor
 @Controller
 public class LoginController extends ExtendsController {
 
-    @Autowired
-    DtoUserService dtoUserService;
+    private final DtoUserService dtoUserService;
 
     /* GET */
 

@@ -6,6 +6,7 @@ import com.young.sarangbang.exception.SarangbangExceptionCode;
 import com.young.sarangbang.model.entity.estateagency.domain.EstateAgency;
 import com.young.sarangbang.model.entity.estateagency.domain.QEstateAgency;
 import com.young.sarangbang.model.entity.estateagency.repository.EstateAgencyRepository;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,15 +23,13 @@ import java.util.List;
  * Description :
  */
 @Slf4j
+@RequiredArgsConstructor
 @Transactional
 @Service
 public class EstateAgencyServiceImpl implements EstateAgencyService {
 
-    @Autowired
-    EstateAgencyRepository estateAgencyRepository;
-
-    @PersistenceContext
-    EntityManager entityManager;
+    private final EstateAgencyRepository estateAgencyRepository;
+    private final EntityManager entityManager;
 
     @Override
     public EstateAgency get(Integer estateAgencySeq) throws SarangbangException {

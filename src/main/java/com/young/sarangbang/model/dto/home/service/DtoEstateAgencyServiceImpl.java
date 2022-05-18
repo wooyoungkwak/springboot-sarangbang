@@ -7,6 +7,7 @@ import com.young.sarangbang.exception.SarangbangException;
 import com.young.sarangbang.model.entity.estateagency.domain.EstateAgency;
 import com.young.sarangbang.model.entity.estateagency.service.EstateAgencyService;
 import com.young.sarangbang.model.dto.home.domain.DtoEstateAgency;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,14 +22,12 @@ import java.util.List;
  * Description :
  */
 @Slf4j
+@RequiredArgsConstructor
 @Service
 public class DtoEstateAgencyServiceImpl implements DtoEstateAgencyService {
 
-    @Autowired
-    EstateAgencyService estateAgencyService;
-
-    @Autowired
-    ObjectMapper objectMapper;
+    private final EstateAgencyService estateAgencyService;
+    private final ObjectMapper objectMapper;
 
     @Override
     public DtoEstateAgency get(Integer estateAgencySeq) throws SarangbangException {

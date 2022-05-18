@@ -4,6 +4,7 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.young.sarangbang.model.entity.files.domain.FileInfo;
 import com.young.sarangbang.model.entity.files.domain.QFileInfo;
 import com.young.sarangbang.model.entity.files.repository.FileInfoRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,13 +20,12 @@ import java.util.List;
  * Project : sarangbang
  * Description :
  */
+@RequiredArgsConstructor
 @Service
 public class FileInfoServiceImpl implements FileInfoService {
 
-    @Autowired
     FileInfoRepository fileInfoRepository;
 
-    @PersistenceContext
     EntityManager entityManager;
 
     @Override

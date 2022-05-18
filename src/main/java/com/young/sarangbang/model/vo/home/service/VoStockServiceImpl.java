@@ -11,6 +11,7 @@ import com.young.sarangbang.model.entity.stock.service.StockInfoService;
 import com.young.sarangbang.model.mapper.StockMapper;
 import com.young.sarangbang.model.vo.home.domain.VoStockCompany;
 import com.young.sarangbang.model.vo.home.domain.VoStockInfo;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,20 +24,14 @@ import java.util.List;
  * Project : sarangbang
  * Description :
  */
+@RequiredArgsConstructor
 @Service
 public class VoStockServiceImpl implements VoStockService {
 
-    @Autowired
-    StockInfoService stockInfoService;
-
-    @Autowired
-    StockCompanyService stockCompanyService;
-
-    @Autowired
-    ObjectMapper objectMapper;
-
-    @Autowired
-    StockMapper stockMapper;
+    private final StockInfoService stockInfoService;
+    private final ObjectMapper objectMapper;
+    private final StockMapper stockMapper;
+    private final StockCompanyService stockCompanyService;
 
     @Override
     public List<VoStockInfo> getsByFirstStockCompanyAndDayType() throws SarangbangException {

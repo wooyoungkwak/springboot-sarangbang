@@ -6,6 +6,7 @@ import com.young.sarangbang.exception.SarangbangExceptionCode;
 import com.young.sarangbang.model.entity.banginfo.domain.BangInfo;
 import com.young.sarangbang.model.entity.banginfo.domain.QBangInfo;
 import com.young.sarangbang.model.entity.banginfo.repository.BangInfoRepository;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,15 +23,13 @@ import java.util.List;
  * Description :
  */
 @Slf4j
+@RequiredArgsConstructor
 @Transactional
 @Service
 public class BangInfoServiceImpl implements BangInfoService {
 
-    @Autowired
-    BangInfoRepository biRepository;
-
-    @PersistenceContext
-    EntityManager entityManager;
+    private final BangInfoRepository biRepository;
+    private final EntityManager entityManager;
 
     @Override
     public BangInfo get(Integer bangInfoSeq) {

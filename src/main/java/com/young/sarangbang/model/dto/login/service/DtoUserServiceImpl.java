@@ -8,6 +8,7 @@ import com.young.sarangbang.model.dto.login.domain.DtoUser;
 import com.young.sarangbang.model.entity.login.domain.User;
 import com.young.sarangbang.model.entity.login.enums.Role;
 import com.young.sarangbang.model.entity.login.service.UserService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,14 +20,12 @@ import org.springframework.stereotype.Service;
  * Description :
  */
 @Slf4j
+@RequiredArgsConstructor
 @Service
 public class DtoUserServiceImpl implements DtoUserService {
 
-    @Autowired
-    UserService userService;
-
-    @Autowired
-    ObjectMapper objectMapper;
+    private final UserService userService;
+    private final ObjectMapper objectMapper;
 
     @Override
     public DtoUser get(Integer userSeq) throws SarangbangException {
