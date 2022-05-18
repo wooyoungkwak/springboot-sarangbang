@@ -7,7 +7,6 @@ package com.young.sarangbang.controller;
 
 import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 public class ExtendsController {
 
     protected String getPath(String path) {

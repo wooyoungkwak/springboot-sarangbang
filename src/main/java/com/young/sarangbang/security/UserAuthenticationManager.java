@@ -41,12 +41,12 @@ public class UserAuthenticationManager implements AuthenticationManager {
         User user = (User) userDetailsService.loadUserByUsername(account);
 
         if( user == null || !user.isEnabled()) {
-            log.info("사용자의 계정을 찾을수 없습니다.");
+            log.error("사용자의 계정을 찾을수 없습니다.");
             throw new UsernameNotFoundException("사용자의 계정을 찾을수 없습니다.");
         }
 
         if ( !userService.isUser(account, password)) {
-            log.info("사용자의 계정과 패스워드가 맞지 않습니다.");
+            log.error("사용자의 계정과 패스워드가 맞지 않습니다.");
             throw new BadCredentialsException("사용자의 계정과 패스워드가 맞지 않습니다.");
         }
 

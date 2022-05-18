@@ -6,7 +6,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 
-@Slf4j
 @EntityScan(
         basePackageClasses = {Jsr310JpaConverters.class},
         basePackages = {"com.young.sarangbang.model"}

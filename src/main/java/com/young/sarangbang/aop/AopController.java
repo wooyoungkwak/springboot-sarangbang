@@ -17,7 +17,6 @@ import javax.servlet.http.HttpServletRequest;
  * Description :
  */
 
-@Slf4j
 @Aspect
 @Component
 public class AopController {

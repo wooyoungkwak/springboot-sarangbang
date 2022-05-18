@@ -38,7 +38,6 @@ import java.util.List;
  * Project : sarangbang
  * Description :
  */
-@Slf4j
 @RequiredArgsConstructor
 @RequestMapping(value = "/files")
 @Controller

@@ -19,7 +19,6 @@ import org.springframework.stereotype.Service;
  * Project : sarangbang
  * Description :
  */
-@Slf4j
 @RequiredArgsConstructor
 @Service
 public class DtoUserServiceImpl implements DtoUserService {

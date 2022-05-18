@@ -21,7 +21,6 @@ import javax.servlet.http.HttpServletRequest;
  * Project : sarangbang
  * Description :
  */
-@Slf4j
 @RequiredArgsConstructor
 @Controller
 public class LoginController extends ExtendsController {

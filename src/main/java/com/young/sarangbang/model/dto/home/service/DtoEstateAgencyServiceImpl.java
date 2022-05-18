@@ -21,7 +21,6 @@ import java.util.List;
  * Project : sarangbang
  * Description :
  */
-@Slf4j
 @RequiredArgsConstructor
 @Service
 public class DtoEstateAgencyServiceImpl implements DtoEstateAgencyService {

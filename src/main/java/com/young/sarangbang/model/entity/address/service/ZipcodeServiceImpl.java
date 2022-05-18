@@ -23,7 +23,6 @@ import java.util.stream.Collectors;
  * Project : sarangbang
  * Description :
  */
-@Slf4j
 @Service
 public class ZipcodeServiceImpl implements ZipcodeService{
 

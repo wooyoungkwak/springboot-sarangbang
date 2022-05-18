@@ -3,22 +3,20 @@ package com.young.sarangbang.controller.home;
 import com.google.common.collect.Lists;
 import com.young.sarangbang.controller.ExtendsController;
 import com.young.sarangbang.exception.SarangbangException;
-import com.young.sarangbang.model.dto.home.domain.DtoFileInfo;
+import com.young.sarangbang.model.dto.home.domain.DtoBangInfo;
+import com.young.sarangbang.model.dto.home.domain.DtoEstateAgency;
+import com.young.sarangbang.model.dto.home.service.DtoBangInfoService;
+import com.young.sarangbang.model.dto.home.service.DtoEstateAgencyService;
 import com.young.sarangbang.model.dto.home.service.DtoFileInfoService;
 import com.young.sarangbang.model.dto.login.domain.DtoUser;
 import com.young.sarangbang.model.dto.login.service.DtoUserService;
 import com.young.sarangbang.model.entity.address.domain.Zipcode;
 import com.young.sarangbang.model.entity.address.service.ZipcodeService;
 import com.young.sarangbang.model.entity.stock.enums.StockType;
-import com.young.sarangbang.model.dto.home.domain.DtoBangInfo;
-import com.young.sarangbang.model.dto.home.service.DtoBangInfoService;
-import com.young.sarangbang.model.dto.home.domain.DtoEstateAgency;
-import com.young.sarangbang.model.dto.home.service.DtoEstateAgencyService;
 import com.young.sarangbang.model.vo.home.domain.VoStockInfo;
 import com.young.sarangbang.model.vo.home.service.VoStockService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -34,7 +32,6 @@ import java.util.Map;
  * Project : sarangbang
  * Description :
  */
-@Slf4j
 @RequiredArgsConstructor
 @Controller
 public class HomeController extends ExtendsController {
@@ -80,8 +77,6 @@ public class HomeController extends ExtendsController {
         List<VoStockInfo> voStockInfos = voStockService.getsByFirstStockCompanyAndDayType();
         if (voStockInfos != null) {
             model.addAttribute("voStockInfos", voStockInfos);
-        } else {
-            log.info(" **************** voStockInfos is null ");
         }
 
         return getPath("/dashboard");
