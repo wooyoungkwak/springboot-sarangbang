@@ -72,8 +72,9 @@ public class simpleTest {
     public void testEncrypt() {
 
         String key = "qwer1234";
+        key = "clientId"+"secretKey"+":" + "PASSWORD";
 
-        String encryptedKey = YoungEncoder.encrypt(key);
+                String encryptedKey = YoungEncoder.encrypt(key);
         System.out.println("encrypt key = " + encryptedKey);
 
         key = "qwer";
@@ -81,9 +82,11 @@ public class simpleTest {
         System.out.println("encrypt key = " + encryptedKey);
 
 //        key = "kvYs/Q7sYJ0DYDWar2c0lA==";
-        key = "pk8Il1/x+DqaPOdQMsbZbA==";
-        String value = YoungEncoder.decrypt("KNET_ENCRYPT_KEY", "KNET_ENCRYPT_IV", key);
-        System.out.println("decrypt value = " + value);
+//        key = "pk8Il1/x+DqaPOdQMsbZbA==";
+//        key = "fYvgGaod9u67IwbmCHluTT AQV Z3LlwPijygTsYRHQ=";
+          key = "fYvgGaod9u67IwbmCHluTT+AQV+Z3LlwPijygTsYRHQ=";
+//        String value = YoungEncoder.decrypt("KNET_ENCRYPT_KEY", "KNET_ENCRYPT_IV", key);
+//        System.out.println("decrypt value = " + value);
 
     }
 

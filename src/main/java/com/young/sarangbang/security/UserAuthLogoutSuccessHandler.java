@@ -24,13 +24,14 @@ public class UserAuthLogoutSuccessHandler extends SimpleUrlLogoutSuccessHandler 
         super.setAlwaysUseDefaultTargetUrl(true);
 
         // targetUrl 파라메터 이름 설정
-//        super.setTargetUrlParameter("redirectUrl");
+        super.setTargetUrlParameter("redirectUrl");
 
         // 페이지 URL 설정
         super.setDefaultTargetUrl("/login");
 
         // 페이지 이동
         super.onLogoutSuccess(request, response, authentication);
+
     }
 
 }
