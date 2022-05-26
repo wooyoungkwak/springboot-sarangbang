@@ -28,7 +28,7 @@ $.fn.fileUpload = function (opt) {
             xhr.setRequestHeader('AJAX', true);
         },
         xhr: function () {
-            var myXhr = $.ajaxSettings.xhr();
+            let myXhr = $.ajaxSettings.xhr();
             return myXhr;
         },
         error: function (jqXHR, statusCode, errorThrown) {
@@ -70,7 +70,7 @@ $.fileDownload = function (_contextPath, fileType, fileName) {
 }
 
 $.fileDelete = function (opt) {
-    var ret = false;
+    let ret = false;
 
     $.ajax({
         url: opt.contextPath + '/fileDelete',
@@ -146,7 +146,7 @@ $.ajaxSync = function (url, reqData) {
         return;
     }
 
-    var result = {};
+    let result = {};
 
     $.ajax({
         url: url,

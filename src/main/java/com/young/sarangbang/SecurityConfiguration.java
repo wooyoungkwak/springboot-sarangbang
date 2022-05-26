@@ -60,38 +60,38 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         httpSecurity.authenticationManager(authenticationManager);
 
         // security Session policy
-        // SessionCreationPolicy.ALWAYS : 스프링시큐리티가 항상 세션을 생성
-        // SessionCreationPolicy.IF_REQUIRED : 스프링시큐리티가 필요시 생성 (기본)
-        // SessionCreationPolicy.NEVER : 스프링시큐리티가 생성하지않지만, 기존에 존재하면 사용
-        // SessionCreationPolicy.STATELESS : 스프링시큐리티가 생성하지도않고 기존것을 사용하지도 않음 ( JWT 에 주로 사용)
+        // SessionCreationPolicy.ALWAYS         : 스프링시큐리티가 항상 세션을 생성
+        // SessionCreationPolicy.IF_REQUIRED    : 스프링시큐리티가 필요시 생성 (기본)
+        // SessionCreationPolicy.NEVER          : 스프링시큐리티가 생성하지않지만, 기존에 존재하면 사용
+        // SessionCreationPolicy.STATELESS      : 스프링시큐리티가 생성하지도않고 기존것을 사용하지도 않음 ( JWT 에 주로 사용)
         httpSecurity.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.NEVER);
 
         // define authorize
         httpSecurity.authorizeRequests()
             // 페이지 권한 설정
-            .antMatchers("/password").permitAll()
-            .antMatchers("/register").permitAll()
-            .antMatchers("/login").permitAll()
+            .antMatchers("/password").permitAll()       // /password url 접속 승인
+            .antMatchers("/register").permitAll()       // /register url 접속 승인
+            .antMatchers("/login").permitAll()          // /login url 접속 승인
 //            .anyRequest().authenticated()
             .and()
-                .authorizeRequests().antMatchers("/**").authenticated()
+                .authorizeRequests().antMatchers("/**").authenticated() // 모든 url 은 인증 (단, 상단의 url(/password, /register, /login, /resource/** ) 은 제외)
                 .and()
             .formLogin()
-                .loginPage("/login")                    // login 페이지
-                .usernameParameter("username")          // id 파라미터
-                .passwordParameter("password")          // 패스워드 파라미터
-                .loginProcessingUrl("/loginProcess")    // 로그인  Form Action URL
-                .successHandler(userAuthSuccessHandler)
-                .failureHandler(userAuthFailureHandler)
+                .loginPage("/login")                        // login 페이지
+                .usernameParameter("username")              // id 파라미터
+                .passwordParameter("password")              // 패스워드 파라미터
+                .loginProcessingUrl("/loginProcess")        // 로그인  Form Action URL
+                .successHandler(userAuthSuccessHandler)     // ID/PASSWORD 인증 후 처리 Handler
+                .failureHandler(userAuthFailureHandler)     // ID/PASSWORD 인증 실패 후 처리 Handler
                 .permitAll()
             .and()
             .logout()
-                .logoutUrl("/logout")
-                .logoutSuccessHandler(userAuthLogoutSuccessHandler)
-                .deleteCookies("JSESSIONID")            // 쿠키 삭제
+                .logoutUrl("/logout")                                   // logout 페이지
+                .logoutSuccessHandler(userAuthLogoutSuccessHandler)     // Logout 후 처리 Handler
+                .deleteCookies("JSESSIONID")           // 쿠키 삭제
             .and()
             .exceptionHandling()
-                .accessDeniedPage("/404");
+                .accessDeniedPage("/404");                  // 인증 오류 발생시 이동할 페이지
 
         log.info(" security configure register [HttpSecurity] ");
     }
