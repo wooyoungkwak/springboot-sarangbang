@@ -24,8 +24,8 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
 
     <script type="text/javascript" src="<%=contextPath%>/resources/js/lib/jquery/jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" src="<%=contextPath%>/resources/js/base.js"></script>
-    <script type="text/javascript" src="<%=contextPath%>/resources/js/scripts.js"></script>
+    <script type="text/javascript" src="<%=contextPath%>/resources/js/base-jquery.js"></script>
+    <script type="text/javascript" src="<%=contextPath%>/resources/js/base-javascript.js"></script>
 
     <script type="text/javascript">
         let log = console.log;

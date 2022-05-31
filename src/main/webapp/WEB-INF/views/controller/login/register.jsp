@@ -154,8 +154,6 @@
 
     <!-- javascript -->
     <stripes:layout-component name="javascript">
-        <%--        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>--%>
-        <%--        <script src="<%=contextPath%>/resources/js/scripts.js"></script>--%>
         <script type="text/javascript">
             $(document).ready(function () {
                 let $btnRegister = $('#BtnRegister');
