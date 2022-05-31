@@ -195,3 +195,32 @@ $.getContextPath = function () {
     return location.href.substring(hostIndex, location.href.indexOf('/', hostIndex + 1));
 }
 
+// ready is deprecated ( jquery over 3.0 )
+$(() => {
+    // Toggle the side navigation
+    const sidebarToggle = document.body.querySelector('#sidebarToggle');
+    if (sidebarToggle) {
+        // Uncomment Below to persist sidebar toggle between refreshes
+        if (localStorage.getItem('sb-sidenav-toggle') === 'true') {
+            document.body.classList.toggle('sb-sidenav-toggled');
+        }
+        sidebarToggle.addEventListener('click', event => {
+            event.preventDefault();
+            document.body.classList.toggle('sb-sidenav-toggled');
+            localStorage.setItem('sb-sidenav-toggle', document.body.classList.contains('sb-sidenav-toggled'));
+        });
+    }
+
+    // table for simpleDatatables class
+    const datatablesSimple = document.getElementById('datatablesSimple');
+    if (datatablesSimple) {
+        new simpleDatatables.DataTable(datatablesSimple);
+    }
+
+    // table for simpleDatatables class
+    const datatablesSimple2 = document.getElementById('datatablesSimple2');
+    if (datatablesSimple2) {
+        new simpleDatatables.DataTable(datatablesSimple2);
+    }
+
+});
