@@ -15,8 +15,6 @@ repositories {
     maven { url 'https://repo.spring.io/snapshot' }
 }
 
-apply from: 'initProject.gradle'
-
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
@@ -27,3 +25,5 @@ dependencies {
 tasks.named('test') {
     useJUnitPlatform()
 }
+
+apply from: 'initProject.gradle'
