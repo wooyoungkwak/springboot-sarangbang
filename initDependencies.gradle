@@ -56,6 +56,9 @@ dependencies {
     // lombok
     compileOnly 'org.projectlombok:lombok'
 
+    // commons-lang3  ( StringUtils 등 )
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
+
     /* annotationProcessor */
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     annotationProcessor 'org.projectlombok:lombok'

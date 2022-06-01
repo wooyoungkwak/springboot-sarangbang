@@ -1,5 +1,5 @@
 // web 및 java source 디렉토리 생성
-task initWebProject(dependsOn: ['createYML', 'createLog4j'], description: "initialize Web Project") {
+task initFile(dependsOn: ['createYML', 'createLog4j'], description: "initialize Web Project") {
 
     doLast {
 
