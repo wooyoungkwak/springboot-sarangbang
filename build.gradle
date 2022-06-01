@@ -18,11 +18,8 @@ repositories {
 apply from: 'initProject.gradle'
 
 dependencies {
-    // general
     implementation 'org.springframework.boot:spring-boot-starter-web'
     providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
-
-    // test
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'junit:junit:4.12'
 }
