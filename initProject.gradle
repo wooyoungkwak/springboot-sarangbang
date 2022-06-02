@@ -1,5 +1,6 @@
 /* extends */
 ext.dependenceOnSecurity = true                   // whether to use spring-boot-security
+ext.dependenceOnJwt = false                        // whether to use jwt
 ext.dependenceOnRDBMS = true                      // whether to use RDBMS
 ext.dependenceOnQUERYDSL = true                   // whether to use query DSL
 ext.dependenceOnMYBATIS = true                    // whether to use mybatis
