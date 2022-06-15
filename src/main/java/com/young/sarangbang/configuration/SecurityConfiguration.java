@@ -1,4 +1,4 @@
-package com.young.sarangbang;
+package com.young.sarangbang.configuration;
 
 import com.young.sarangbang.security.*;
 import lombok.RequiredArgsConstructor;

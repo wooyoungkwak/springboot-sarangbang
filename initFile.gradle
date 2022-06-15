@@ -135,20 +135,9 @@ task createLog4j {
     }
 }
 
-def mybatisYML() {
-    String content = ""
-    content +=  "    batis:\n" +
-            "      jdbc-url: \n" +
-            "      username: \n" +
-            "      password: \n"
-    return content;
-}
-
 // application.yml 파일 생성
 task createYML {
     doLast {
-        print "create yml .... "  + mybatisYML()
-
         String content = "spring:\n" +
                 "  mvc:\n" +
                 "    view:\n" +
@@ -247,13 +236,6 @@ task createYML {
                 case RDMBS.ORACLE:
                     break
             }
-
-            if ( dependenceOnMYBATIS != null && dependenceOnMYBATIS ) {
-                content +=  "    batis:\n" +
-                        "      jdbc-url: \n" +
-                        "      username: \n" +
-                        "      password: \n"
-            }
         }
         content +=
                 "server:\n" +
@@ -327,14 +309,6 @@ task createYML {
                 case RDMBS.ORACLE:
                     break
             }
-
-            if ( dependenceOnMYBATIS != null && dependenceOnMYBATIS ) {
-                content +=  "    batis:\n" +
-                        "      jdbc-url: \n" +
-                        "      username: \n" +
-                        "      password: \n"
-            }
-
         }
         content +=
                 "server:\n" +

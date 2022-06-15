@@ -1,4 +1,4 @@
-package com.young.sarangbang;
+package com.young.sarangbang.configuration;
 
 import com.young.sarangbang.model.entity.stock.enums.StockType;
 import lombok.RequiredArgsConstructor;
@@ -37,7 +37,7 @@ public class MyBatisConfiguration {
     String mapperPath;
 
     @Bean
-    @ConfigurationProperties(prefix = "spring.datasource.batis")
+    @ConfigurationProperties(prefix = "spring.datasource")
     public DataSource mybatisDatasource(){
         return DataSourceBuilder.create().build();
     }
