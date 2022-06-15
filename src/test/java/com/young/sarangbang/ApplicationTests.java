@@ -16,10 +16,10 @@ import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
         basePackages = {"com.young.sarangbang.model"}
 )
 @ComponentScan(basePackages = {"com.young"}, excludeFilters = {@Filter(SpringBootApplication.class)})
-public class SarangbangApplicationTests {
+public class ApplicationTests {
 
     public static void main(String[] args) {
-        SpringApplication.run(SarangbangApplicationTests.class, args);
+        SpringApplication.run(ApplicationTests.class, args);
     }
 
 }

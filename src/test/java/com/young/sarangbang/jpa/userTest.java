@@ -1,25 +1,22 @@
 package com.young.sarangbang.jpa;
 
-import com.young.sarangbang.SarangbangApplicationTests;
+import com.young.sarangbang.ApplicationTests;
+import com.young.sarangbang.model.dto.home.domain.DtoBangInfo;
 import com.young.sarangbang.model.dto.home.domain.DtoEstateAgency;
+import com.young.sarangbang.model.dto.home.service.DtoBangInfoService;
 import com.young.sarangbang.model.entity.address.domain.Zipcode;
 import com.young.sarangbang.model.entity.address.enums.ZipcodeHan;
 import com.young.sarangbang.model.entity.address.service.ZipcodeService;
 import com.young.sarangbang.model.entity.banginfo.domain.BangInfo;
 import com.young.sarangbang.model.entity.banginfo.service.BangInfoService;
-import com.young.sarangbang.model.entity.estateagency.domain.EstateAgency;
-import com.young.sarangbang.model.entity.estateagency.service.EstateAgencyService;
 import com.young.sarangbang.model.entity.login.domain.User;
 import com.young.sarangbang.model.entity.login.service.UserService;
-import com.young.sarangbang.model.dto.home.domain.DtoBangInfo;
-import com.young.sarangbang.model.dto.home.service.DtoBangInfoService;
 import com.young.sarangbang.model.entity.stock.domain.StockInfo;
 import com.young.sarangbang.model.mapper.StockMapper;
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.jxls.common.Context;
-import org.jxls.transform.poi.PoiTransformer;
 import org.jxls.util.JxlsHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -27,10 +24,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.nio.file.Paths;
 import java.util.List;
 
@@ -46,7 +44,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @RunWith(SpringRunner.class)
 @ActiveProfiles(value = "debug")
-@SpringBootTest(classes = SarangbangApplicationTests.class)
+@SpringBootTest(classes = ApplicationTests.class)
 public class userTest {
 
     @Autowired
@@ -64,11 +62,8 @@ public class userTest {
     @Autowired
     StockMapper stockMapper;
 
-    @Value("${file.path}")
-    String filePath;
-
-    @Value("${file.refPath}")
-    String refPath;
+    @Value("${file.resourceLocation}")
+    String resourceLocation;
 
     @Value("${file.excelPath}")
     String excelPath;
@@ -155,10 +150,10 @@ public class userTest {
         }
 
         String name = "sample.xlsx";
-        Resource resource = resourceLoader.getResource(refPath + name);
+        Resource resource = resourceLoader.getResource(excelPath + name);
         InputStream inputStream = resource.getInputStream();
 
-        String fileName = Paths.get(filePath, name).toString();
+        String fileName = Paths.get(resourceLocation, name).toString();
         File file = new File(fileName);
         FileOutputStream fileOutputStream = new FileOutputStream(file);
         Context context = new Context();
@@ -198,10 +193,10 @@ public class userTest {
 //      estateAgencyProperties = new DtoEstateAgency().toString();
 
                 String name = "sample2.xlsx";
-        Resource resource = resourceLoader.getResource(refPath + name);
+        Resource resource = resourceLoader.getResource(excelPath + name);
         InputStream inputStream = resource.getInputStream();
 
-        String fileName = Paths.get(filePath, name).toString();
+        String fileName = Paths.get(resourceLocation, name).toString();
         File file = new File(fileName);
         FileOutputStream fileOutputStream = new FileOutputStream(file);
 

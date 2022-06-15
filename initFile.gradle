@@ -1,5 +1,5 @@
 // web 및 java source 디렉토리 생성
-task initFile(dependsOn: ['createYML', 'createLog4j'], description: "initialize Web Project") {
+task initFile(dependsOn: ['createYML', 'createLog4j'], description: " create directory for web and java source !! & create property file ( appliction.yml & log4j2.xml) ") {
 
     doLast {
 
@@ -35,7 +35,7 @@ task initFile(dependsOn: ['createYML', 'createLog4j'], description: "initialize 
         sourceSets.main.java.srcDirs.each {
             String rootDir = it.toString().replace('[', '').replace(']', '')
             String packageDir = this.group.toString().replace('.', '\\')
-            String javaDir = rootDir + '\\' + packageDir + '\\' + this.name
+            String javaDir = rootDir + '\\' + packageDir + '\\' + this.name.toString().replace('-', '')
 
             [
                     new File(javaDir, '/aop'), new File(javaDir, '/controller'), new File(javaDir, '/encrypt'), new File(javaDir, '/exception'),
@@ -127,8 +127,8 @@ task createLog4j {
             [new File(absoluteDir, '../resources/log4j2.xml')].each {
                 if (!it.exists()) {
                     it.createNewFile()
-                    File configFile = file(it)
-                    configFile.write content
+                    File logFile = file(it)
+                    logFile.write(content, "utf-8")
                 }
             }
         }
@@ -168,6 +168,11 @@ task createYML {
                 "logging:\n" +
                         "  config: classpath:log4j2.xml\n" +
                         "debug: false\n" +
+                        "file:\n" +
+                        "  templateLocation: classpath:/templates/\n" +
+                        "  staticLocation: classpath:/static/\n" +
+                        "  resourceUri: /fileUpload/**\n" +
+                        "  resourceLocation: D:/fileUpload/\n" +
                         "---\n" +
                         "# debug\n" +
                         "spring:\n" +
@@ -177,22 +182,56 @@ task createYML {
         if (dependenceOnRDBMS != null && dependenceOnRDBMS) {
             switch (typeOfRDMBS) {
                 case RDMBS.MSSQL:
-                    content +=
-                            "  jpa:\n" +
-                                    "    database-platform: org.hibernate.dialect.SQLServer2012Dialect\n" +
-                                    "  datasource:\n" +
-                                    "    url: jdbc:sqlserver://localhost;databaseName=_____;trustServerCertificate=true;encrypt=true;\n" +
-                                    "    username: \n" +
-                                    "    password: \n"
+                    content += "  jpa:\n" +
+                            "    database-platform: org.hibernate.dialect.SQLServer2012Dialect\n" +
+                            "  datasource:\n"
+                    if (hostOfDEBUG != null && hostOfDEBUG != "") {
+                        content += "    url: jdbc:sqlserver://" + hostOfDEBUG
+                    } else {
+                        content += "    url: jdbc:sqlserver://" + "______"
+                    }
+
+                    content += ";databaseName="
+
+                    if (databaseNameOfDEBUG != null && databaseNameOfDEBUG != "") {
+                        content += databaseNameOfDEBUG
+                    } else {
+                        content += "_____"
+                    }
+
+                    content += ";trustServerCertificate=true;encrypt=true;\n"
+                    if (usernameOfDEBUG !=null ) content += "    username: " +  usernameOfDEBUG + "\n"
+                    else content += "    username: \n"
+
+                    if (passwordOfDEBUG != null) content += "    password: " + passwordOfDEBUG + "\n"
+                    else content += "    password: \n"
                     break
                 case RDMBS.MYSQL:
-                    content +=
-                            "  jpa:\n" +
-                                    "    database-platform: ??\n" +
-                                    "  datasource:\n" +
-                                    "    url: \n" +
-                                    "    username: \n" +
-                                    "    password: \n"
+                    content += "  jpa:\n" +
+                            "    database-platform: ??\n" +
+                            "  datasource:\n"
+                    if (hostOfDEBUG != null && hostOfDEBUG != "") {
+                        content += "    url: jdbc:mysql://" + hostOfDEBUG + ":3306"
+                    } else {
+                        content += "    url: jdbc:mysql://" + "______" + ":3306"
+                    }
+
+                    content += "/"
+
+                    if (databaseNameOfDEBUG != null && databaseNameOfDEBUG != "") {
+                        content += databaseNameOfDEBUG
+                    } else {
+                        content += "_____"
+                    }
+
+                    content += "?serverTimezone=Asia/Seoul\n"
+                    if (usernameOfDEBUG !=null ) {
+                        content += "    username: " + usernameOfDEBUG + "\n"
+                    } else content += "    username: \n"
+
+                    if (passwordOfDEBUG != null) {
+                        content += "    password: " + passwordOfDEBUG + "\n"
+                    } else content += "    password: \n"
                     break
                 case RDMBS.ORACLE:
                     break
@@ -214,22 +253,57 @@ task createYML {
         if (dependenceOnRDBMS != null && dependenceOnRDBMS) {
             switch (typeOfRDMBS) {
                 case RDMBS.MSSQL:
-                    content +=
-                            "  jpa:\n" +
-                                    "    database-platform: org.hibernate.dialect.SQLServer2012Dialect\n" +
-                                    "  datasource:\n" +
-                                    "    url: jdbc:sqlserver://localhost;databaseName=_____;trustServerCertificate=true;encrypt=true;\n" +
-                                    "    username: \n" +
-                                    "    password: \n"
+                    content += "  jpa:\n" +
+                            "    database-platform: org.hibernate.dialect.SQLServer2012Dialect\n" +
+                            "  datasource:\n"
+                    if (hostOfRELASE != null && hostOfRELASE != "") {
+                        content += "    url: jdbc:sqlserver://" + hostOfRELASE
+                    } else {
+                        content += "    url: jdbc:sqlserver://" + "______"
+                    }
+
+                    content += ";databaseName="
+
+                    if (databaseNameOfRELASE != null && databaseNameOfRELASE != "") {
+                        content += databaseNameOfRELASE
+                    } else {
+                        content += "_____"
+                    }
+
+                    content += ";trustServerCertificate=true;encrypt=true;\n"
+                    if (usernameOfRELASE !=null ) {
+                        content += "    username: " + usernameOfRELASE + "\n"
+                    } else {content += "    username: \n"}
+
+                    if (passwordOfRELASE != null) {
+                        content += "    password: " + passwordOfRELASE + "\n"
+                    } else {content += "    password: \n"}
                     break
                 case RDMBS.MYSQL:
-                    content +=
-                            "  jpa:\n" +
-                                    "    database-platform: ??\n" +
-                                    "  datasource:\n" +
-                                    "    url: \n" +
-                                    "    username: \n" +
-                                    "    password: \n"
+                    content += "  jpa:\n" +
+                            "    database-platform: ??\n" +
+                            "  datasource:\n"
+                    if (hostOfRELASE != null && hostOfRELASE != "") {
+                        content += "    url: jdbc:mysql://" + hostOfRELASE + ":3306"
+                    } else {
+                        content += "    url: jdbc:mysql://" + "______" + ":3306"
+                    }
+
+                    content += "/"
+
+                    if (databaseNameOfRELASE != null && databaseNameOfRELASE != "") {
+                        content += databaseNameOfRELASE
+                    } else {
+                        content += "_____"
+                    }
+                    content += "?serverTimezone=Asia/Seoul\n"
+                    if (usernameOfRELASE !=null ) {
+                        content += "    username: " + usernameOfRELASE + "\n"
+                    } else {content += "    username: \n"}
+
+                    if (passwordOfRELASE != null) {
+                        content += "    password: " + passwordOfRELASE + "\n"
+                    } else {content += "    password: \n"}
                     break
                 case RDMBS.ORACLE:
                     break
@@ -248,13 +322,13 @@ task createYML {
             [new File(absoluteDir, '../resources/application.yml')].each {
                 if (!it.exists()) {
                     it.createNewFile()
-                    File configFile = file(it)
-                    configFile.write content
+                    File ymlFile = file(it)
+                    ymlFile.write(content, "utf-8")
                 }
 
             }
 
-            [new File(absoluteDir, '../resources/application.properties' )].each {
+            [new File(absoluteDir, '../resources/application.properties')].each {
                 if (it.exists()) {
                     it.delete()
                 }

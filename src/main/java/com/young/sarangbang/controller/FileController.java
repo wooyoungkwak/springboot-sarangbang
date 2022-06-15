@@ -47,8 +47,8 @@ public class FileController {
 
     private final DtoFileInfoService dtoFileInfoService;
 
-    @Value("${file.path}")
-    String storePath;
+    @Value("${file.resourceLocation}")
+    String resourceLocation;
 
     @Value("${file.excelPath}")
     String excelPath;
@@ -108,7 +108,7 @@ public class FileController {
         HashMap<String, Object> resultMap = Maps.newHashMap();
         String result = "";
         try {
-            String path = storePath;
+            String path = resourceLocation;
             boolean isMultipart = ServletFileUpload.isMultipartContent(request);
             if (!isMultipart) {
                 result = "fail";
@@ -179,7 +179,7 @@ public class FileController {
     public void download(HttpServletRequest request, HttpServletResponse response, HashMap<String, Object> parameterMap) throws Exception {
 
         String fileName = (String) parameterMap.get("fileName");
-        String filePath = Paths.get(storePath, fileName).toString();
+        String filePath = Paths.get(resourceLocation, fileName).toString();
         File file = new File(filePath);
 
         BufferedInputStream bufferedInputStream = null;

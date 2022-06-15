@@ -1,4 +1,4 @@
-package com.young.sarangbang;
+package com.young.sarangbang.local;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -9,6 +9,8 @@ import com.young.sarangbang.model.entity.banginfo.domain.BangInfo;
 import com.young.sarangbang.model.dto.home.domain.DtoBangInfo;
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -25,6 +27,8 @@ import java.util.stream.Collectors;
  * Project : sarangbang
  * Description :
  */
+
+@RunWith(SpringRunner.class)
 public class simpleTest {
 
     @Test
